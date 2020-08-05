@@ -1,0 +1,12 @@
+.todo.completed {
+  text-decoration: line-through;
+  color: red;
+}
+
+.todos {
+  background-color: rgb(9, 51, 189);
+  padding: 20px;
+  border-radius: 5px;
+  color: white;
+  font-size: 28px;
+}
