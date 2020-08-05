@@ -1,12 +1,28 @@
-.todo.completed {
-  text-decoration: line-through;
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.todos {
+.todo.completed {
+  text-decoration: line-through;
+  color: white;
+  background-color: rgb(47, 92, 244);
+}
+.todo.completed::after {
+  content: " ✔️ Done";
+  color: white;
+  position: relative;
+  top: 0;
+
+  float: right;
+}
+
+.todo {
   background-color: rgb(9, 51, 189);
   padding: 20px;
   border-radius: 5px;
   color: white;
   font-size: 28px;
+  margin: 10px;
 }

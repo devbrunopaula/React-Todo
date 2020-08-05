@@ -6,11 +6,13 @@ export class Todo extends Component {
   render() {
     const { task, id, completed } = this.props.data;
     return (
-      <div
-        className={`todo${completed ? " completed" : ""}`}
-        onClick={() => this.props.toggleTodos(id)}
-      >
-        <h5 className="todos">{task}</h5>
+      <div>
+        <h5
+          className={`todo${completed ? " completed" : ""}`}
+          onClick={() => this.props.toggleTodos(id)}
+        >
+          {task}
+        </h5>
       </div>
     );
   }
