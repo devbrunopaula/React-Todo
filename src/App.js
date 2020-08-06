@@ -1,10 +1,10 @@
-import React from "react";
-import TodoList from "./components/TodoList";
-import TodoForm from "./components/TodoForm";
+import React from "react"
+import TodoList from "./components/TodoList"
+import TodoForm from "./components/TodoForm"
 
 class App extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       data: [
         {
@@ -18,60 +18,99 @@ class App extends React.Component {
           completed: false,
         },
       ],
-    };
+      currentSearched: "",
+      notFound: [
+        {
+          task: "Not Found...",
+          id: 15342,
+          completed: false,
+        },
+      ],
+    }
   }
 
-  toggleTodos = (itemId) => {
-    console.log("ItemId", itemId);
-    // toggle completed
-    // 1st if this items matches
+  toggleTodos = itemId => {
     this.setState({
-      data: this.state.data.map((todo) => {
+      data: this.state.data.map(todo => {
         if (itemId === todo.id) {
           return {
             ...todo,
             completed: !todo.completed,
-          };
+          }
         }
-        return todo;
+        return todo
       }),
-    });
-  };
+    })
+  }
 
-  handleInput = (todo) => {
-    console.log("handle", todo);
+  handleInput = todo => {
     const newTodo = {
       task: todo,
       id: Date.now(),
       completed: false,
-    };
+    }
     this.setState({
       data: [...this.state.data, newTodo],
-    });
-    console.log("state", this.state.data);
-  };
+    })
+    console.log("state", this.state.data)
+  }
 
   clearCompleted = () => {
     this.setState({
-      data: this.state.data.filter((todo) => todo.completed === false),
-    });
-  };
+      data: this.state.data.filter(todo => todo.completed === false),
+    })
+  }
+  deleteTodo = todoId => {
+    this.setState({
+      data: this.state.data.filter(todo => todo.id !== todoId),
+    })
+  }
+
+  todoSearch = e => {
+    this.setState({ currentSearched: e.target.value })
+  }
+
+  test = e => {
+    console.log("test")
+    this.setState({
+      data: this.state.data.filter(todo =>
+        todo.task.includes(this.state.currentSearched)
+      ),
+    })
+  }
 
   render() {
-    console.log(this.state.data);
+    console.log(this.state.data)
+    const filteredData = this.state.data.filter(todo =>
+      todo.task
+        .toLowerCase()
+        .includes(this.state.currentSearched.toLocaleLowerCase())
+    )
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-
-        <TodoForm handleInput={this.handleInput} />
-        <TodoList
-          data={this.state.data}
-          toggleTodos={this.toggleTodos}
-          clearCompleted={this.clearCompleted}
-        />
+      <div className='app'>
+        <div className='wrapper'>
+          <h2 className='todo__title'>Todo App!</h2>
+          {console.log(filteredData.length)}
+          <TodoForm handleInput={this.handleInput} />
+          <input
+            className='app_search'
+            type='search'
+            value={this.state.currentSearched}
+            onChange={this.todoSearch}
+            placeholder='Search...'
+          />
+          <TodoList
+            data={
+              filteredData.length === 0 ? this.state.notFound : filteredData
+            }
+            toggleTodos={this.toggleTodos}
+            clearCompleted={this.clearCompleted}
+            deleteTodo={this.deleteTodo}
+          />
+        </div>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

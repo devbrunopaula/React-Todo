@@ -4,25 +4,173 @@
   box-sizing: border-box;
 }
 
+body {
+}
+
+.app {
+  background-image: url("https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,h_600,q_75,w_1000/v1/clients/napavalley/Chappellet_Vineyard_Sunset_in_Fall_42eaa7cf-a1f1-4f6b-a260-b6890a6762db.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  mask-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.712));
+
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  box-shadow: 1px 1px 1px rgba(250);
+  width: 50%;
+}
+.todo__title {
+  font-size: 38px;
+  color: #fffefe;
+  padding-bottom: 20px;
+}
+
 .todo.completed {
   text-decoration: line-through;
-  color: white;
-  background-color: rgb(47, 92, 244);
+  color: #666464;
+  background-color: rgb(49, 231, 171);
+  transition: 0.2s ease-in-out;
 }
 .todo.completed::after {
   content: " ✔️ Done";
   color: white;
   position: relative;
   top: 0;
-
+  transition: 0.2s ease-in-out;
   float: right;
 }
 
 .todo {
-  background-color: rgb(9, 51, 189);
+  background-color: #2f89fc;
+
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: white;
   font-size: 28px;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
+  box-shadow: 10px 10px 14px -6px rgba(0, 0, 0, 0.44);
+}
+
+.todo__List {
+  width: 100%;
+  margin: 20px;
+}
+
+.form {
+  background-color: rgb(209, 208, 208);
+  padding: 0px 0 0 15px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 14px -6px rgba(0, 0, 0, 0.44);
+}
+
+.form__input {
+  background-color: transparent;
+  border: none;
+  height: 50px;
+  width: 20rem;
+  border-radius: 10px;
+  font-size: 22px;
+  color: rgb(51, 46, 46);
+  font-weight: 800;
+  font-family: sans-serif;
+  outline: none;
+}
+.form__input-error {
+  background-color: transparent;
+  border: none;
+  height: 50px;
+  width: 300px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: rgb(51, 46, 46);
+  font-weight: 800;
+  font-family: sans-serif;
+  outline: none;
+}
+.form__input-error::placeholder {
+  color: rgb(201, 45, 45);
+}
+
+.form__button {
+  display: inline-block;
+  background-color: #ece9e9;
+  height: 80px;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  margin: 0;
+  padding: 0;
+  width: 7rem;
+  cursor: pointer;
+  font-size: 18px;
+  outline: none;
+}
+
+.form__button:hover {
+  background-color: grey;
+  color: white;
+}
+
+.todo__clear {
+  display: block;
+  background-color: grey;
+  display: inline-block;
+  background-color: #df3a3a;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 10px 10px 14px -6px rgba(0, 0, 0, 0.44);
+  margin-top: 20px;
+  color: white;
+  outline: none;
+}
+.todo__clear:hover {
+  box-shadow: 10px 10px 14px -6px rgba(0, 0, 0, 0.44);
+  background-color: #e21818;
+}
+
+.todo__delete {
+  background: rgb(221, 221, 221);
+  border: none;
+  padding: 10px;
+  border: none;
+  box-shadow: 10px 10px 14px -6px rgba(0, 0, 0, 0.44);
+  float: right;
+  position: relative;
+  top: -62px;
+  left: -10px;
+  border-radius: 5px 0 0 5px;
+  cursor: pointer;
+}
+
+.todo__delete:hover {
+  background-color: red;
+  color: white;
+}
+
+.app_search {
+  margin-top: 20px;
+  margin-right: 5px;
+  align-self: flex-end;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.61);
+  box-shadow: 10px 10px 14px -6px rgba(0, 0, 0, 0.44);
 }

@@ -1,10 +1,9 @@
-import React, { Component } from "react";
-import TodoForm from "./TodoForm";
-import "./Todo.css";
+import React, { Component } from "react"
+import "./Todo.css"
 
 export class Todo extends Component {
   render() {
-    const { task, id, completed } = this.props.data;
+    const { task, id, completed } = this.props.data
     return (
       <div>
         <h5
@@ -13,9 +12,17 @@ export class Todo extends Component {
         >
           {task}
         </h5>
+        {completed ? null : (
+          <button
+            onClick={() => this.props.deleteTodo(id)}
+            className='todo__delete'
+          >
+            Delete
+          </button>
+        )}
       </div>
-    );
+    )
   }
 }
 
-export default Todo;
+export default Todo
